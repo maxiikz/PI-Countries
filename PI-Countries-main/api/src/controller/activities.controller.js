@@ -29,6 +29,7 @@ const createActivity = async(req,res)=>{
     }
     catch(error){
         console.log(error, "No se pudo crear post :(")
+        return res.status(504)
     
     }
 }

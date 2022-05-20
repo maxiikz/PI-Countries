@@ -1,11 +1,12 @@
 const axios =require ("axios")
+const { Op } = require("sequelize")
 const {Country, Activity} = require ("../db")
 
 const countryApi = async ()=>{
     const apiurl = await axios.get("https://restcountries.com/v3/all")
     const todospaises = await apiurl.data.map(e => {
         return {
-            name:e.name,
+            name:e.name.official,
             id: e.cca3,
             region: e.region,
             flagimg:e.flags[1],
@@ -26,21 +27,25 @@ const savesCountry = async (req, res) =>{
     let {name} = req.query;
     try {
        let full = await Country.findAll({
-           includes:{model: Activity}
+           include:{model: Activity}
        })
        if (!full.length){
            await Country.bulkCreate(info) 
-       }else{
-           res.status (200).json(full)
-       }
-       if(name){
-           let countryName = await Country.findAll({
-               where:{name:{[
-                   Op.iLike //Me trae todos los que coinciden con Query
-               ]:`%${name.toLowerCase()}%`}}
-           })
-           countryName.length?res.status(200).json(countryName):res.status(404).send("no está :(")
-       }
+        
+        }
+        if(name){
+            let countryName = await Country.findAll({
+                where:{name:{[
+                    Op.iLike //Me trae todos los que coinciden con Query
+                 ]:`%${name}%`}}
+             })
+             countryName.length?res.status(200).json(countryName):res.status(404).send("no está :(")
+         }else{
+             let full = await Country.findAll({
+                 include:{model: Activity}
+             }) 
+             res.status(200).json(full)
+         }
     } catch (err){
         console.log (err);
     }
