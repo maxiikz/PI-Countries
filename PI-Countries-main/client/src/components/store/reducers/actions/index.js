@@ -8,6 +8,14 @@ export function getCountries(){
         })
     }
 }
+export function orderByReg(payload){
+    return function(dispatch){
+        dispatch({type:"FILTER_REGION",
+        payload:payload})
+    }
+        
+    }
+
 export function orderByName(payload){
     return async (dispatch) =>{
         try{
@@ -34,6 +42,7 @@ export function orderByPop(payload){
         }
     }
 }
+
 export function getDetail(id){
     return async function(dispatch){
         let json=await axios.get(`http://localhost:3001/countries/${id}`);

@@ -12,7 +12,7 @@ const Home = () => {
   const countries= useSelector(state=>state.countries);
   const dispatch= useDispatch();
   const [currentPage, setCurrentPage]= useState(1);
-  const [countryPage, setCountryPage]= useState(10);
+  const [countryPage, /*setCountryPage*/]= useState(10);
   const indexOfLastCountries= currentPage*countryPage;
   const indexOfFirstCountry= indexOfLastCountries - countryPage;
   const currentCountries= countries?.slice(indexOfFirstCountry, indexOfLastCountries);

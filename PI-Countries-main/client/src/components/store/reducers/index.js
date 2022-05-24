@@ -20,7 +20,7 @@ function rootReducer(state= initialState, action){
         }
         case "SORT_NAME":
             const copy=[...state.countries]
-            let mageName=action.payload==="A Z"? state.countries.sort(
+            let mageName=action.payload==="A Z"? state.countries.slice().sort(
                 function (a,b){
                     if(a.name>b.name){
                         return 1;
@@ -30,7 +30,7 @@ function rootReducer(state= initialState, action){
                     }
                     return 0;
                 }
-            ): action.payload=== "Z A"? state.countries.sort(
+            ): action.payload=== "Z A"? state.countries.slice().sort(
                 function(a,b){
                     if(a.name>b.name){
                         return -1
@@ -48,7 +48,7 @@ function rootReducer(state= initialState, action){
         }
         case "SORT_POP":
             const copy2=[...state.countries]
-            let magePop=action.payload==="low high"? state.countries.sort(
+            let magePop=action.payload==="low high"? state.countries.slice().sort(
                 (a,b)=>{
                     if(a.population>b.population){
                         return 1;
@@ -58,7 +58,7 @@ function rootReducer(state= initialState, action){
                     }
                     return 0;
                 }
-            ): action.payload=== "high low"? state.countries.sort(
+            ): action.payload=== "high low"? state.countries.slice().sort(
                 (a,b)=>{
                     if(a.population>b.population){
                         return -1
@@ -77,6 +77,12 @@ function rootReducer(state= initialState, action){
         case "BAR_SEARCH":return{
             ...state,
             countries: action.payload
+        }
+        case "FILTER_REGION":{
+            return {
+                ...state,
+                filterCountries: state.countries.slice().filter(e => e.continent === action.payload)
+            }
         }
         case "FILTER_ACTIVITY":return{
             ...state,

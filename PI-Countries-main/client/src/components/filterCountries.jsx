@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getCountries, orderByName, orderByPop } from './store/reducers/actions';
+import { getCountries, orderByName, orderByPop, orderByReg } from './store/reducers/actions';
 
-const FilterCountries = ({setCurrentPage}) => {
+
+const FilterCountries = ({setCurrentPage, setOrder}) => {
   const dispatch=useDispatch();
   useEffect(()=>{
       //dispatch (getActivity());
@@ -14,12 +15,20 @@ const FilterCountries = ({setCurrentPage}) => {
        }
       const handleName= (e)=>{
           e.preventDefault();//ordena los nombres
-          setCurrentPage(1);
-          dispatch(orderByName(e.target.value))
+        
+          dispatch(orderByName(e.target.value));
+            setCurrentPage(1);
+            setOrder(e.target.value);
+         
+      }
+      const handleReg=(e)=>{
+          e.preventDefault();
+          dispatch(orderByReg(e.target.value))
       }
       const handlePop= (e)=>{
-        e.preventDefault();//ordena los populstion
+        e.preventDefault();//ordena los nombres
         setCurrentPage(1);
+        
         dispatch(orderByPop(e.target.value))
     }
   return (
@@ -43,7 +52,7 @@ const FilterCountries = ({setCurrentPage}) => {
                 </select>
         </label>
         <label>sort by region
-            <select>
+            <select onChange={(e)=>handleReg(e)}>
                 <option value="Africa">Africa</option>
                 <option value="Americas">Americas</option>
                 <option value="Antarctic">Antarctic</option>

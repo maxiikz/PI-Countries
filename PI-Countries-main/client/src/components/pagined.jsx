@@ -1,18 +1,16 @@
 import React from 'react'
 
 
-const Pagined = ({countries, countryPage, pagCountries}) => {
-  let pagNumb=[];
+export default function Pagined ({countries, countryPage, pagCountries})  {
+  const pagNumb=[];
   for(let i=1; i<=Math.ceil(countries/countryPage);i++){
       pagNumb.push(i);
   }
   return   (
    <nav>
        <ul>
-           {pagNumb && pagNumb.map(number=><a key={number} onClick={()=>pagCountries(number)}>{number}</a>)}
+           {pagNumb && pagNumb.map(number=><button key={number} onClick={()=>pagCountries(number)}>{number}</button>)}
        </ul>
    </nav>
   )
 }
-
-export default Pagined
