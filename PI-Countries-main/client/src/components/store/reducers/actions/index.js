@@ -8,6 +8,32 @@ export function getCountries(){
         })
     }
 }
+export function orderByName(payload){
+    return async (dispatch) =>{
+        try{
+            dispatch({
+                type: "SORT_NAME",
+                payload:payload
+            })
+            
+        }catch(err){
+            console.log(err,"error order")
+        }
+    }
+}
+export function orderByPop(payload){
+    return async (dispatch) =>{
+        try{
+            dispatch({
+                type: "SORT_POP",
+                payload:payload
+            })
+            
+        }catch(err){
+            console.log(err,"error pop")
+        }
+    }
+}
 export function getDetail(id){
     return async function(dispatch){
         let json=await axios.get(`http://localhost:3001/countries/${id}`);

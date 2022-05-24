@@ -9,6 +9,7 @@ const landing = () => {
       <button className={styles.btnlanding}><Link to='/home' >HOLA</Link></button>
    
       </div>
+      <div className={styles.textPresentation}>HOLA ESTE ES MI PROYECTO QUE FELIZ QUE ESTOY, CLICK EN HOLA!</div>
       
     </div>
   )
