@@ -8,6 +8,25 @@ export function getCountries(){
         })
     }
 }
+export function getActivities(){
+    return function (dispatch){
+        axios.get("http://localhost:3001/activity").then(response=>{
+            return dispatch({
+                type:"GET_ACTIVITIES", payload:response.data
+            })
+        })
+    }
+}
+export function postActivities(payload){
+    return function(dispatch){
+        axios.post("http://localhost:3001/activity", payload).then(response=>{
+         return dispatch({
+            type:"POST_ACTIVITIES", payload:response.data
+        })   
+        });
+        
+    }}
+
 export function orderByReg(payload){
     return function(dispatch){
         dispatch({type:"FILTER_REGION",
@@ -49,6 +68,18 @@ export function getDetail(id){
         return dispatch({
             type:"GET_DETAIL", payload:json.data
         })
+    }
+}
+export let filterByActivity = (payload) => {
+    return async (dispatch) => {
+        try {
+            return dispatch({
+                type: "FILTER_ACTIVITY",
+                payload: payload
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 export function barSearch(name){

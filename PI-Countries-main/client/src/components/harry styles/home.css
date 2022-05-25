@@ -22,9 +22,17 @@ padding-top: 5px;
 padding-bottom: 5px;
 font-size: 15px;
 }
-.details{font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+#details{font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
     font-weight:normal;
-    color: black;}
+    color: black;
+    background-image: url("./retrato-profesor-raza-caucasica-pie-bordo-puntero-apuntando-globo-clase-hombre-ensenando-geografia-aula-leccion-online-profesor-explicando-tema_153977.jpeg");
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-position: center;
+    background-size: cover;
+}
+
 .wordForMore{
     background-color: black;
 }

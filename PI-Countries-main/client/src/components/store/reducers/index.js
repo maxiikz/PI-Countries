@@ -4,7 +4,7 @@ const initialState = {
     filterCountries:[],
     countries: [],
     detail:{},
-    filterActivity:[]
+    activity:[]
     
 }
 function rootReducer(state= initialState, action){
@@ -78,15 +78,33 @@ function rootReducer(state= initialState, action){
             ...state,
             countries: action.payload
         }
-        case "FILTER_REGION":{
+        case "FILTER_REGION":
+      const filterByReg =
+        action.payload === "ALL"
+          ? state.countries
+          : state.countries.filter((element) =>
+              element.region.includes(action.payload)
+            );
+      return {
+        ...state,
+        countries: filterByReg,
+      };
+      case "FILTER_ACTIVITY":
+            let filterByActivities = action.payload === "All"
+            ? state.countries
+            : state.countries.filter(country => country.activity && country.activity.map(a => a.name).includes(action.payload)) 
+                console.log(filterByActivities)
+              
             return {
                 ...state,
-                filterCountries: state.countries.slice().filter(e => e.continent === action.payload)
+                countries: filterByActivities
             }
-        }
-        case "FILTER_ACTIVITY":return{
+        case "GET_ACTIVITIES":return{
             ...state,
-            
+            activity:action.payload
+        }
+        case "POST_ACTIVITIES":return{
+            ...state
         }
         default:return{
             ...state

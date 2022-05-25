@@ -13,6 +13,7 @@ const Home = () => {
   const dispatch= useDispatch();
   const [currentPage, setCurrentPage]= useState(1);
   const [countryPage, /*setCountryPage*/]= useState(10);
+  
   const indexOfLastCountries= currentPage*countryPage;
   const indexOfFirstCountry= indexOfLastCountries - countryPage;
   const currentCountries= countries?.slice(indexOfFirstCountry, indexOfLastCountries);
@@ -34,7 +35,7 @@ const Home = () => {
           
           <Link to={"/home/paises/" + c.id}>
             <button id='buttondetail'><div id='wordForMore'><h1>CLICK FOR DETAILS</h1></div>
-            <Cards id='details'name={c.name} flagimg={c.flagimg} region={c.region} key={c.id}/>
+            <Cards id='details' flagimg={c.flagimg}name={c.name} region={c.region} key={c.id}/>
             </button>
             </Link>
         )})}
