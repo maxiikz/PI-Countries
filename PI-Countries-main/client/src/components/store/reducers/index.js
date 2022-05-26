@@ -92,7 +92,7 @@ function rootReducer(state= initialState, action){
       case "FILTER_ACTIVITY":
             let filterByActivities = action.payload === "All"
             ? state.countries
-            : state.countries.filter(country => country.activity && country.activity.map(a => a.name).includes(action.payload)) 
+            : state.countries.slice().filter(country => country.activity && country.activity.map(a => a.name).find(action.payload)) 
                 console.log(filterByActivities)
               
             return {
@@ -106,6 +106,7 @@ function rootReducer(state= initialState, action){
         case "POST_ACTIVITIES":return{
             ...state
         }
+        
         default:return{
             ...state
         }

@@ -26,6 +26,9 @@ const Home = () => {
       SOY HOMERO
       <div>
         <nav>
+        <button>
+            <Link to="/Activity">CREATE ACTIVITY</Link>
+          </button>
           <FilterCountries
           setCurrentPage={setCurrentPage}
           ></FilterCountries>
@@ -34,8 +37,8 @@ const Home = () => {
         {countries && currentCountries?.map(c=>{return (
           
           <Link to={"/home/paises/" + c.id}>
-            <button id='buttondetail'><div id='wordForMore'><h1>CLICK FOR DETAILS</h1></div>
-            <Cards id='details' flagimg={c.flagimg}name={c.name} region={c.region} key={c.id}/>
+            <button ><div ><h1>CLICK FOR DETAILS</h1></div>
+            <Cards  flagimg={c.flagimg}name={c.name} region={c.region} key={c.id}/>
             </button>
             </Link>
         )})}
