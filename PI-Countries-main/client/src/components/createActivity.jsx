@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { postActivities, getCountries } from "./store/reducers/actions";
+import styles from './harry styles/CreateActivity.module.css'
 
 const CreateActivity = () => {
   const dispatch = useDispatch();
@@ -72,14 +73,14 @@ const CreateActivity = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Create a Turistic Activity:</h1>
       <nav>
-        <Link to="/countries">
-          <button>Back to Home</button>
+        <Link to="/home">
+          <button className={styles.buttons}>Back to Home</button>
         </Link>
       </nav>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Name:</label>
           <input
@@ -144,7 +145,7 @@ const CreateActivity = () => {
               })}
           </div>
         </div>
-        <button type="submit">Create New Activity!</button>
+        <button type="submit" className={styles.buttons}>Create New Activity!</button>
       </form>
     </div>
   );

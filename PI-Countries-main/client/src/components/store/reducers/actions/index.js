@@ -28,12 +28,25 @@ export function postActivities(payload){
     }}
 
 export function orderByReg(payload){
-    return function(dispatch){
-        dispatch({type:"FILTER_REGION",
-        payload:payload})
-    }
+    // return async(dispatch){
+    //     dispatch({type:"FILTER_REGION",
+    //     payload:payload})
+    // }
         
+    // }
+    return async(dispatch)=>{
+        try {
+            dispatch({
+                type:"FILTER_REGION",
+                payload:payload
+            })
+            
+        } catch (err) {
+            console.log(err, "error reg")
+            
+        }
     }
+}
 
 export function orderByName(payload){
     return async (dispatch) =>{
@@ -74,7 +87,7 @@ export let filterByActivity = (payload) => {
     return async (dispatch) => {
         try {
             return dispatch({
-                type: "FILTER_ACTIVITY",
+                type: "FILTER_BY_ACTIVITY",
                 payload: payload
             })
         } catch (error) {

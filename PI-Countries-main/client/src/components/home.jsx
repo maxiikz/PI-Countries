@@ -38,7 +38,7 @@ const Home = () => {
           
           <Link to={"/home/paises/" + c.id}>
             <button ><div ><h1>CLICK FOR DETAILS</h1></div>
-            <Cards  flagimg={c.flagimg}name={c.name} region={c.region} key={c.id}/>
+            <Cards  flagimg={c.flagimg}name={c.name} region={c.region} population={c.population} key={c.id}/>
             </button>
             </Link>
         )})}

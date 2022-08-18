@@ -26,6 +26,9 @@ const FilterCountries = ({setCurrentPage, setOrder}) => {
       const handleReg=(e)=>{
           e.preventDefault();
           dispatch(orderByReg(e.target.value))
+          setCurrentPage(1);
+          setOrder(e.target.value)
+          
       }
       const handleActivity= (e)=>{
           e.preventDefault();

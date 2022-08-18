@@ -1,3 +1,14 @@
-#detailcss{
-background-color: black;
+.detailcss{
+background-image: url("./details.jpg");
+background-size: cover;
+color:antiquewhite
+}
+.detailcss:hover{
+    
+       
+        transition: .5s;
+        color: white;
+        background-color: var(--dark);
+        box-shadow: 9px 13px 21px 1px #141010;
+    
 }
