@@ -37,7 +37,7 @@ const savesCountry = async (req, res) =>{
             let countryName = await Country.findAll({
                 where:{name:{[
                     Op.iLike //Me trae todos los que coinciden con Query
-                 ]:`%${name}%`}}
+                 ]:`%${name.toLowerCase()}%`}}
              })
              countryName.length?res.status(200).json(countryName):res.status(404).send("no está :(")
          }else{
